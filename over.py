@@ -10,4 +10,4 @@ for pixel_a, pixel_b in zip(image_one.data(), image_two.data()):
     pixel_a.b = (pixel_b.b * pixel_b.a) + (pixel_a.b * ( 1 - pixel_b.a))
     # pixel_a.a += pixel_b.a
 
-image_one.show(title="Over")
+image_one.show(title="Over operation")

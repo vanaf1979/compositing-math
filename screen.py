@@ -18,4 +18,4 @@ for pixel_a, pixel_b in zip(image_one.data(), image_two.data()):
     # The A over B Composite
     pixel_a.a = (pixel_a.a + pixel_b.a) * (1 - pixel_a.a)
 
-image_one.show(title="Screen Blend Mode")
+image_one.show(title="Screen operation")

@@ -12,4 +12,4 @@ for pixel in image_in.data():
     pixel.b = average
 
 
-image_in.show(title="Screen Blend Mode")
+image_in.show(title="Desaturate basic operation")

@@ -31,4 +31,4 @@ for pixel in image_in.data():
     pixel.b = pixel.b + factor * (sum - pixel.b)
 
 
-image_in.show(title="Screen Blend Mode")
+image_in.show(title="Desaturate optically operation")
