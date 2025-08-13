@@ -6,6 +6,8 @@
 import cv2
 import numpy as np
 
+EPSILON = 1e-6
+
 class Pixel:
     """
     A simple wrapper class for a pixel's data, providing intuitive
@@ -138,6 +140,22 @@ class Pixel:
     def __repr__(self):
         """String representation for printing."""
         return f"Pixel(r={self.r:.2f}, g={self.g:.2f}, b={self.b:.2f})"
+
+    def premultiply(self):
+        self.r *= self.a
+        self.g *= self.a
+        self.b *= self.a
+
+    def unpremultiply(self):
+        if self.a < EPSILON:
+            self.r = 0.0
+            self.g = 0.0
+            self.b = 0.0
+        else:
+            self.r /= self.a
+            self.g /= self.a
+            self.b /= self.a
+
 
 
 class Image:
