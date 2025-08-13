@@ -1,29 +1,19 @@
-
-
 from inc.image_classes import Image
 
-image_one = Image("./images/red.png")
-image_two = Image("./images/blue_alpha.png")
+EPSILON = 1e-6
 
-for pixel_a, pixel_b in zip(image_one.data(), image_two.data()):
+image_one = Image("./images/checkout.png")
+image_two = Image("./images/face.png")
 
-    # Final_Color=1−(1−Background_Color)/Foreground_Color
+for background, foreground in zip(image_one.data(), image_two.data()):
 
-    if pixel_b.r == 0:
-        pixel_a.r = 0
-    else:
-        pixel_a.r = 1 - (1 - pixel_a.r) / (pixel_b.r * pixel_b.a)
+    background.r = 1 - (1 - background.r) / (foreground.r + EPSILON) if foreground.r > 0 else 0
+    background.g = 1 - (1 - background.g) / (foreground.g + EPSILON) if foreground.g > 0 else 0
+    background.b = 1 - (1 - background.b) / (foreground.b + EPSILON) if foreground.b > 0 else 0
 
-    if pixel_b.g == 0:
-        pixel_a.g = 0
-    else:
-        pixel_a.g = 1 - (1 - pixel_a.g) / (pixel_b.g * pixel_b.a)
+    # Standard over operation for the alpha channel
+    background.a = foreground.a + background.a * (1 - foreground.a)
 
-    if pixel_b.b == 0:
-        pixel_a.b = 0
-    else:
-        pixel_a.b = 1 - (1 - pixel_a.b) / (pixel_b.b * pixel_b.a)
-
-    pixel_a.a = max(pixel_a.a, pixel_b.a)
+    background.premultiply()
 
 image_one.show(title="Lighten operation")
