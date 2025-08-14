@@ -19,4 +19,4 @@ for background, foreground in zip(image_one.data(), image_two.data()):
     background.a = max(background.a, foreground.a)
 
 
-image_one.show(title="Lighten operation")
+image_one.show(title="Max / Lighten operation")
