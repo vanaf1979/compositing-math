@@ -34,4 +34,4 @@ for pixel in image.data():
     # The alpha channel is not affected by color adjustments
     # and remains unchanged.
 
-image.show(title=f"Lift adjusted by amount = {lift_amount}")
+image.show(title=f"Lift corrected operation")

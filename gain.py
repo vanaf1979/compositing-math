@@ -33,4 +33,4 @@ for pixel in image.data():
     # The alpha channel is not affected by color adjustments
     # and remains unchanged.
 
-image.show(title=f"Gain adjusted by factor = {gain_factor}")
+image.show(title=f"Gain corrected operation")
