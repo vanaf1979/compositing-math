@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 
 # Load the image
-# Replace 'your_image.jpg' with the path to your image
 image = cv2.imread('./images/checkout.png')
 
 # Check if the image was loaded successfully
